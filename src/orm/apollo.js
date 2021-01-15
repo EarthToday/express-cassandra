@@ -184,7 +184,10 @@ Apollo.prototype = {
       const ormReplication = normalizer.normalize_replication_option(options.defaultReplicationStrategy);
 
       if (!_.isEqual(dbReplication, ormReplication)) {
-        keyspaceBuilder.alter_keyspace(keyspaceName, options.defaultReplicationStrategy, callback);
+        // TODO: Currently the express-cassandra not suport for stressless cassandra on AWS about replication
+
+        // keyspaceBuilder.alter_keyspace(keyspaceName, options.defaultReplicationStrategy, callback);
+        callback();
         return;
       }
 
